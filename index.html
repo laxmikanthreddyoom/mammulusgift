@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f3e8" />
+    <title>A little birthday surprise</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <main class="birthday-page">
+      <section class="screen" id="screen-passcode" aria-labelledby="page-title">
+        <div class="paper passcode-paper">
+          <span class="star star-one" aria-hidden="true">✦</span>
+          <span class="star star-two" aria-hidden="true">✧</span>
+
+          <section class="memory" aria-label="A birthday memory">
+            <div class="photo-frame">
+              <img class="home-memory-photo" src="assets/mammu%202.jpeg" alt="A favorite photo memory" />
+            </div>
+            <p class="photo-caption">my favorite person</p>
+            <span class="kitty" aria-hidden="true">🐱</span>
+          </section>
+
+          <section class="passcode-card" aria-labelledby="page-title">
+            <span class="card-flower" aria-hidden="true">✿</span>
+            <h1 id="page-title" tabindex="-1">Enter passcode</h1>
+            <p class="card-note">A little surprise is waiting for you</p>
+
+            <div class="passcode-display" aria-hidden="true">
+              <span class="passcode-dot"></span>
+              <span class="passcode-dot"></span>
+              <span class="passcode-dot"></span>
+              <span class="passcode-dot"></span>
+            </div>
+            <p class="sr-only" id="entry-description">Four-digit passcode entry</p>
+            <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+
+            <div class="keypad" role="group" aria-label="Passcode keypad">
+              <button type="button" class="key" data-digit="1" aria-label="1">1</button>
+              <button type="button" class="key" data-digit="2" aria-label="2">2</button>
+              <button type="button" class="key" data-digit="3" aria-label="3">3</button>
+              <button type="button" class="key" data-digit="4" aria-label="4">4</button>
+              <button type="button" class="key" data-digit="5" aria-label="5">5</button>
+              <button type="button" class="key" data-digit="6" aria-label="6">6</button>
+              <button type="button" class="key" data-digit="7" aria-label="7">7</button>
+              <button type="button" class="key" data-digit="8" aria-label="8">8</button>
+              <button type="button" class="key" data-digit="9" aria-label="9">9</button>
+              <button type="button" class="key key-utility" data-action="clear" aria-label="Clear passcode">×</button>
+              <button type="button" class="key" data-digit="0" aria-label="0">0</button>
+              <button type="button" class="key key-utility" data-action="backspace" aria-label="Delete last digit">⌫</button>
+            </div>
+            <button type="button" class="enter-button" id="enter-button">Enter <span aria-hidden="true">♡</span></button>
+          </section>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-surprise" aria-labelledby="surprise-title" hidden>
+        <div class="paper scene-paper centered-paper">
+          <span class="sticker sticker-left" aria-hidden="true">♡</span>
+          <span class="sticker sticker-right" aria-hidden="true">✦</span>
+          <p class="eyebrow">just for you</p>
+          <h1 id="surprise-title" tabindex="-1">Wanna see your surprise?</h1>
+          <p class="scene-copy">I made a little something to celebrate you!</p>
+          <figure class="surprise-cat-art">
+            <img src="assets/surprise-cat.jpg" alt="A cute cat with a pink bow" />
+          </figure>
+          <div class="choice-row">
+            <button type="button" class="pill-button yes-button" id="surprise-yes">YES <span aria-hidden="true">♡</span></button>
+            <button type="button" class="pill-button no-button" id="surprise-no">NO</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-no-surprise" aria-labelledby="no-surprise-title" hidden>
+        <div class="paper scene-paper centered-paper no-screen">
+          <h1 id="no-surprise-title" tabindex="-1">How dare you click NO!</h1>
+          <img class="no-surprise-image" src="assets/no-surprise.jpg" alt="A little bear hugging their friend" />
+          <p class="scene-copy">That surprise is definitely meant for you.</p>
+          <button type="button" class="pill-button" id="try-again">TRY AGAIN</button>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-birthday" aria-labelledby="birthday-title" hidden>
+        <div class="paper scene-paper centered-paper birthday-intro">
+          <span class="birthday-stars" aria-hidden="true">✦　✧　✦</span>
+          <p class="eyebrow">today is all about you</p>
+          <h1 id="birthday-title" tabindex="-1" class="birthday-heading">HAPPY<br />BIRTHDAY!</h1>
+          <figure class="birthday-memory">
+            <img src="assets/m%203.jpeg" alt="A birthday memory" />
+            <figcaption>a little birthday memory</figcaption>
+          </figure>
+          <p class="scene-copy">Make a wish — your candles are almost ready.</p>
+          <div class="birthday-presents" aria-hidden="true">🎁　🎂　🎁</div>
+          <p class="countdown-note">The next surprise is coming up...</p>
+          <button type="button" class="text-button" id="skip-to-candles">Go to the candles now</button>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-candles" aria-labelledby="candles-title" hidden>
+        <div class="paper scene-paper centered-paper candle-screen">
+          <p class="eyebrow">make a wish</p>
+          <h1 id="candles-title" tabindex="-1">Blow out the candles!</h1>
+          <p class="scene-copy">Tap a candle or the button below.</p>
+          <div class="cake" role="group" aria-label="Birthday cake with candles">
+            <div class="candles">
+              <button type="button" class="candle" aria-label="Blow out candle 1"><span class="flame"></span><span class="wick"></span></button>
+              <button type="button" class="candle" aria-label="Blow out candle 2"><span class="flame"></span><span class="wick"></span></button>
+              <button type="button" class="candle" aria-label="Blow out candle 3"><span class="flame"></span><span class="wick"></span></button>
+              <button type="button" class="candle" aria-label="Blow out candle 4"><span class="flame"></span><span class="wick"></span></button>
+              <button type="button" class="candle" aria-label="Blow out candle 5"><span class="flame"></span><span class="wick"></span></button>
+            </div>
+            <div class="cake-top"></div>
+            <div class="cake-body"><span>♡</span><span>✿</span><span>♡</span></div>
+            <div class="cake-plate"></div>
+          </div>
+          <p class="feedback" id="candle-feedback" role="status" aria-live="polite"></p>
+          <button type="button" class="pill-button" id="blow-button">Blow out the candles</button>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-age" aria-labelledby="age-title" hidden>
+        <div class="paper age-paper centered-paper">
+          <p class="age-caption" id="age-title" tabindex="-1">One year more wonderful</p>
+          <div class="age-stage" aria-live="polite">
+            <span class="age-number old-age" id="old-age">20</span>
+            <span class="age-number new-age" id="new-age" hidden>21</span>
+          </div>
+          <p class="age-message" id="age-message">Let the old year go with a little sparkle...</p>
+          <button type="button" class="pill-button age-continue" id="age-continue" hidden>See your gifts <span aria-hidden="true">♡</span></button>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-gift-question" aria-labelledby="gift-question-title" hidden>
+        <div class="paper scene-paper centered-paper gifts-question">
+          <p class="eyebrow">there's more!</p>
+          <h1 id="gift-question-title" tabindex="-1">Accept your gifts?</h1>
+          <div class="present-cat" aria-hidden="true"><span>🎈</span><span>🐱</span><span>🎁</span></div>
+          <div class="choice-row">
+            <button type="button" class="pill-button yes-button" id="gifts-yes">YES</button>
+            <button type="button" class="pill-button no-button" id="gifts-no">NO</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-no-gifts" aria-labelledby="no-gifts-title" hidden>
+        <div class="paper scene-paper centered-paper no-screen">
+          <div class="present-cat retry-cat" aria-hidden="true">🐱🎁</div>
+          <h1 id="no-gifts-title" tabindex="-1">Please try again</h1>
+          <figure class="retry-fire-art">
+            <img src="assets/fire.jpg" alt="A couple standing together outdoors in traditional outfits" />
+          </figure>
+          <p class="scene-copy">These little gifts are waiting just for you.</p>
+          <button type="button" class="pill-button" id="okay-button">OKAY</button>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-gift-menu" aria-labelledby="gift-menu-title" hidden>
+        <div class="paper scene-paper centered-paper gift-menu">
+          <p class="eyebrow">three little surprises</p>
+          <h1 id="gift-menu-title" tabindex="-1">Yay! Choose your gift</h1>
+          <div class="gift-options">
+            <button type="button" class="gift-option" data-gift="letter">
+              <span class="gift-art envelope-art" aria-hidden="true">💌</span>
+              <span class="gift-label">Gift 1</span>
+            </button>
+            <button type="button" class="gift-option" data-gift="garden">
+              <span class="gift-art bouquet-art" aria-hidden="true">💐</span>
+              <span class="gift-label">Gift 2</span>
+            </button>
+            <button type="button" class="gift-option" data-gift="book">
+              <span class="gift-art box-art" aria-hidden="true">🎁</span>
+              <span class="gift-label">Gift 3</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-gift-letter" aria-labelledby="letter-title" hidden>
+        <div class="paper scene-paper gift-detail gift-letter-page">
+          <div class="letter-layout">
+            <article class="letter-sheet">
+              <p class="eyebrow">Gift 1 · From the heart</p>
+              <h1 id="letter-title" tabindex="-1">My dearest bestie,</h1>
+              <p>On your birthday, I just want you to know how much happier life is with you in it.</p>
+              <p>Thank you for every laugh, every long talk, and all the little moments that became some of my favorite memories.</p>
+              <p>I hope this new year brings you the same kindness, joy, and love that you give to everyone around you.</p>
+              <p class="letter-signoff">Happy birthday!<br />All my love, your bestie <span aria-hidden="true">💙</span></p>
+            </article>
+            <div class="letter-photo-stage" role="group" aria-label="Favorite photo memories">
+              <figure class="letter-photo letter-photo-one">
+                <img src="assets/mammu%203.jpeg" alt="A favorite birthday memory" />
+                <figcaption>one of my favorite days</figcaption>
+              </figure>
+              <figure class="letter-photo letter-photo-two">
+                <img src="assets/mammu%204.jpeg" alt="Another cherished memory together" />
+                <figcaption>our happy little moments</figcaption>
+              </figure>
+            </div>
+          </div>
+          <button type="button" class="pill-button back-to-gifts">Back to gifts</button>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-gift-garden" aria-labelledby="garden-title" hidden>
+        <div class="paper scene-paper centered-paper gift-detail garden-detail">
+          <p class="eyebrow">Gift 2</p>
+          <h1 id="garden-title" tabindex="-1">A garden of memories</h1>
+          <p class="scene-copy">Tap a photo to read its memory, drag it to move it, or tap a butterfly for a quote.</p>
+          <div class="photo-garden">
+            <button type="button" class="butterfly butterfly-one" aria-label="Show a best-friend quote"><span aria-hidden="true">🦋</span></button>
+            <button type="button" class="butterfly butterfly-two" aria-label="Show another best-friend quote"><span aria-hidden="true">🦋</span></button>
+            <button type="button" class="butterfly butterfly-three" aria-label="Show another best-friend quote"><span aria-hidden="true">🦋</span></button>
+          </div>
+          <p class="quote-bubble" id="friend-quote" role="status" aria-live="polite">Tap a butterfly for a new best-friend quote each time.</p>
+          <button type="button" class="pill-button back-to-gifts">Back to gifts</button>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-gift-book" aria-labelledby="book-title" hidden>
+        <div class="paper scene-paper centered-paper gift-detail book-detail">
+          <p class="eyebrow">Gift 3</p>
+          <h1 id="book-title" tabindex="-1">Our little books</h1>
+          <div class="book-selector" role="group" aria-label="Choose a book">
+            <button type="button" class="book-choice is-selected" id="photo-album-choice" aria-pressed="true">📷 Photo album</button>
+            <button type="button" class="book-choice" id="notebook-choice" aria-pressed="false">✎ Notebook</button>
+          </div>
+          <div class="open-book" id="memory-album" aria-label="Spiral-bound photo album" aria-live="polite">
+          </div>
+          <div class="book-controls">
+            <button type="button" class="page-button" id="previous-page" aria-label="Previous page" disabled>‹</button>
+            <span id="book-page-count" aria-live="polite">1 / 10</span>
+            <button type="button" class="page-button" id="next-page" aria-label="Next page">›</button>
+          </div>
+          <button type="button" class="pill-button back-to-gifts">Back to gifts</button>
+        </div>
+      </section>
+      <span class="page-cat" aria-hidden="true">🐱</span>
+      <button type="button" class="music-toggle" id="music-toggle" aria-pressed="false" aria-label="Play birthday music">
+        <span aria-hidden="true">♫</span>
+        <span id="music-label">Play music</span>
+      </button>
+      <audio id="birthday-music" src="assets/song/Full%20Video_Tu%20Hi%20Yaar%20Mera%20_%20Pati%20Patni%20Aur%20Woh%20_%20Kartik%20A%2CBhumi%20P%2CAnanya%20P_%20Rochak%2CArijit%20S%2CNeha%20K_320k.mp3" loop preload="none"></audio>
+      <p class="sr-only" id="music-status" role="status" aria-live="polite"></p>
+      <dialog class="photo-lightbox" id="photo-lightbox" aria-label="Enlarged photo">
+        <button type="button" class="photo-lightbox-close" id="photo-lightbox-close" aria-label="Close enlarged photo">×</button>
+        <img id="photo-lightbox-image" alt="" />
+        <p id="photo-lightbox-caption"></p>
+      </dialog>
+    </main>
+  </body>
+</html>
